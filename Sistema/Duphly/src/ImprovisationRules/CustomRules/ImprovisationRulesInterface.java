@@ -65,6 +65,13 @@ public class ImprovisationRulesInterface {
         existingRules.add(new TupleNameTypeImpRule("Agregar silencios en la octava 4", "Verificar y corregir", false, new AgregarSilencios()));
         existingRules.add(new TupleNameTypeImpRule("Agregar division de notas y salto de octava", "Verificar y corregir", false, new AgregarDivisionDeNotasYSaltosDeOctava()));
         existingRules.add(new TupleNameTypeImpRule("Agregar dividir nota y aumentar un semitono", "Verificar y corregir", false, new AgregarDivisionDeNotasYAumentoDeUnSemitono()));
+        existingRules.add(new TupleNameTypeImpRule("Escalas ascendentes", "Verificar y corregir", false, new EscalasAscendentes()));
+        existingRules.add(new TupleNameTypeImpRule("Escalas descendentes", "Verificar y corregir", false, new EscalasDescendentes()));
+        existingRules.add(new TupleNameTypeImpRule("AgregarSilenciosBajos", "Verificar y corregir", false, new AgregarSilenciosBajos()));
+        existingRules.add(new TupleNameTypeImpRule("Aumentar un tono repetidas", "Verificar y corregir", false, new AumentarUnTonoRepetidas()));
+        existingRules.add(new TupleNameTypeImpRule("Disminuir un tono repetidas", "Verificar y corregir", false, new DisminuirUnTonoRepetidas()));
+        existingRules.add(new TupleNameTypeImpRule("Agregar 40 pociento de silencio", "Verificar y corregir", false, new AgregarSilencios40porciento()));
+        
 
   }
     

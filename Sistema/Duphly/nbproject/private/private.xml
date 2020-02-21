@@ -8,6 +8,7 @@
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ExcerptFilter/DependentExcerptFilterElement.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/ModificationConditionChecker/CheckTimesANoteAppear.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/DirectionContinuity.java</file>
+            <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordRules/ChordRule4.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/Rule.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/CreatedRule.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/BlockFilter/BlockSelectors/NoteQuantity.java</file>
@@ -24,6 +25,7 @@
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/LimitJumpsPerBarNotAbusingBluesNote.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordRules/ChordRule3a2.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/NotAbusingBluesNoteRandomModifier.java</file>
+            <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/interfaz/VentanaCreadorDeBase.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ConverterUtil/DurationConvertionUtil.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordManagement/BaseChordsCreator.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/ImprovisationPurelyRandomNotAbusingBluesNote.java</file>
@@ -62,7 +64,6 @@
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/ModificationConditionChecker/CheckOctave.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyExcerpt.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/ModificationConditionChecker/CheckPercentage.java</file>
-            <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/AbsolutSubstitution.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/GuaranteeSolver/DivideAndConquerEvolutionarySolve.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordRules/ChordRuleOpA2.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/BlockFilter/DependentBlockFilterElement.java</file>
@@ -82,6 +83,7 @@
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordRules/ChordRuleOpC1.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/BluesScaleOnTriplets.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ChordRules/ChordRuleOpD2.java</file>
+            <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/interfaz/imagenesNotas.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/ImprovisationRules/FrameworkTesting.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ExcerptFilter/ExcerptConditionSelector.java</file>
             <file>file:/C:/Users/Gaston/Desktop/Duphly%20-%20Maestria/Entrega/Duphly/src/RuleCreationFramework/ModifyExcerpt/ModifyRules/ModificationCondition.java</file>

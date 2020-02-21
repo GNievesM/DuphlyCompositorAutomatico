@@ -30,7 +30,7 @@ public class MoveDemiTones extends SpecificModification{
     
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end,double specificNote,AbstractStyle style) {
-      
+      System.out.println("cambie cosas!");
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
         Note particularNote= melody.get(position);
         melody.set(position,style.addDemiTones(particularNote, up? quantity : -quantity));

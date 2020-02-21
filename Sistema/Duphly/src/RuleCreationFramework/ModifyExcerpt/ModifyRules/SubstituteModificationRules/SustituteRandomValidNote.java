@@ -37,11 +37,14 @@ public class SustituteRandomValidNote  extends SpecificModification{
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end, double specificNote, AbstractStyle style) {
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
+        System.out.println("cambie cosas!");
         if(position+distance <0 || position+distance > melody.size() || comp.esIgual()) // verifico que la nota de comparacion exista, si no existe no hago nada.
             return melody; 
         
         Chord noteAsociatedChord = Util.LookForBaseChord(base,melody,position);
         Note particularNote= melody.get(position+distance);
+        particularNote = new Note(melody.get(position).getDuration(), particularNote.getNote(),particularNote.getOctave(),particularNote.getAccident());
+
         if(this.constraint == false)
             particularNote = style.validRandomNote(noteAsociatedChord, particularNote.getDuration(), prob);
         else{
@@ -49,7 +52,7 @@ public class SustituteRandomValidNote  extends SpecificModification{
                 particularNote = style.biggerValidNote(noteAsociatedChord, particularNote, prob);
             }
             if(comp.esMenor()){
-                particularNote = style.smallerProbabilityNote(noteAsociatedChord, particularNote,prob);
+                particularNote = style.smallerValidNote(noteAsociatedChord, particularNote,prob);
             }
         }
         melody.set(position, particularNote);

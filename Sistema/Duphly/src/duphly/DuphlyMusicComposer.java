@@ -345,14 +345,14 @@ public class DuphlyMusicComposer {
      * @param improvisation
      * @return
      */
-    public Part ConvertImprovisationToJmusic(List<Note> improvisation) {
+    public Part ConvertImprovisationToJmusic(List<Note> improvisation, int index) {
 
-        return new ImprovisationToJmusicConverter().ConvertImprovisation(improvisation);
+        return new ImprovisationToJmusicConverter().ConvertImprovisation(improvisation,index);
     }
 
     public Part ConvertInternalImprovisationToJmusic() {
 
-        return new ImprovisationToJmusicConverter().ConvertImprovisation(this.internalImprovisation);
+        return new ImprovisationToJmusicConverter().ConvertImprovisation(this.internalImprovisation,0);
     }
 
     /**
@@ -377,13 +377,13 @@ public class DuphlyMusicComposer {
         if (addBluesScale) {
             List<Note> bajo = this.ApplyImprovisationRuleGenerate(new BluesScaleOnEveryChord(), base);
             List<List<Note>> MelodyList = new ArrayList<List<Note>>();
-            MelodyList.add(bajo);
             MelodyList.add(improvisation);
+            MelodyList.add(bajo);
             score = this.ConvertImprovisationsAndBaseToJmusic(MelodyList, base, baseNote);
 
         } else {
             score = this.ConvertChordToJmusic(base, baseNote);
-            score.add(this.ConvertImprovisationToJmusic(improvisation));
+            score.add(this.ConvertImprovisationToJmusic(improvisation,0));
             score.setTempo(70);
         }
         return score;
@@ -393,7 +393,7 @@ public class DuphlyMusicComposer {
     public Score ConvertImprovisationsAndBaseToJmusic(List<List<Note>> improvisation, List<Chord> base, int baseNote) {
         Score score = this.ConvertChordToJmusic(base, baseNote);
         for (int i = 0; i < improvisation.size(); i++) {
-            score.add(this.ConvertImprovisationToJmusic(improvisation.get(i)));
+            score.add(this.ConvertImprovisationToJmusic(improvisation.get(i),i));
         }
 
         score.setTempo(70);
@@ -403,7 +403,7 @@ public class DuphlyMusicComposer {
 
     public Score ConvertInternalImprovisationAndBaseToJmusic(int baseNote) {
         Score score = this.ConvertChordToJmusic(this.internalBase, baseNote);
-        score.add(this.ConvertImprovisationToJmusic(this.internalImprovisation));
+        score.add(this.ConvertImprovisationToJmusic(this.internalImprovisation,0));
         score.setTempo(70);
         return score;
 
@@ -461,7 +461,7 @@ public class DuphlyMusicComposer {
     public void CrearPartitura(String ruta) {
         AcordeToLilyPondParse a = new AcordeToLilyPondParse(60);
 
-        List<Phrase> listPhrase = DuphlyMusicComposer.getInstance().ConvertImprovisationToJmusic(DuphlyMusicComposer.getInstance().getListaNotasImprovisacion()).getPhraseList();
+        List<Phrase> listPhrase = DuphlyMusicComposer.getInstance().ConvertImprovisationToJmusic(DuphlyMusicComposer.getInstance().getListaNotasImprovisacion(),0).getPhraseList();
         ArrayList<jm.music.data.Note> listNotes = new ArrayList<jm.music.data.Note>();
 
         for (Phrase frase : listPhrase) {

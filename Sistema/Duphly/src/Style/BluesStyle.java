@@ -203,14 +203,14 @@ public class BluesStyle extends AbstractStyle {
     protected List<Integer> validHeightsAbstractForm(Chord base) {
         List<Integer> result = new ArrayList();
   
-        if(!base.isMinor()){
+   //     if(!base.isMinor()){
             result.add(1);
             result.add(4);
             result.add(6);
             result.add(7);
             result.add(8);
             result.add(11);
-        }else{
+     /*   }else{
             result.add(1);
             result.add(3);
             result.add(4);
@@ -218,7 +218,7 @@ public class BluesStyle extends AbstractStyle {
             result.add(8);
             result.add(10);
             
-        }
+        }*/
         return result;
     }
 }

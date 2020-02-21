@@ -28,7 +28,7 @@ public class SubstituteForASequency extends SpecificModification{
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end, double specificNote, AbstractStyle style) {
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
         int lastPosition= Util.calculateNotePositionInListByTimeSum(melody, end);
-        
+        System.out.println("cambie cosas!");
         for (int i = position, sequencePosition = 0; i < lastPosition && sequencePosition<sequence.size(); i++,sequencePosition++) {
             Note modifying= melody.get(i);
             modifying.setNote(this.sequence.get(sequencePosition).getNote());

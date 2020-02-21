@@ -58,6 +58,7 @@ public class ChordToJmusicConverter {
             Chord aux = chordList.get(i);
             this.bluesRythm(aux);
         }
+        this.bluesPart.setDynamic(60);
         return this.bluesPart;
     }
 

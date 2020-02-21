@@ -27,6 +27,7 @@ public class BluesScaleOnEveryChord extends GenericImprovisationRule {
              if(base.get(i).GetDuration()== ConstantsDefinition.getInstance().GetBlackFigure()*8){
                  int j = base.get(i).GetDuration();
                  double ih = ((double) base.get(i).GetDuration())/16;
+                 
                 result.add(Util.CalculateNoteForChord(base.get(i), 0,((double) base.get(i).GetDuration())/16, 4));
                 result.add(Util.CalculateNoteForChord(base.get(i), 1,((double) base.get(i).GetDuration())/16, 4));
                 result.add(Util.CalculateNoteForChord(base.get(i), 2,((double) base.get(i).GetDuration())/16, 4));

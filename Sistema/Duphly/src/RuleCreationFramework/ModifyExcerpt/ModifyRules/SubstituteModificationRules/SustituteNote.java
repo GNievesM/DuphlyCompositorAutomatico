@@ -36,6 +36,7 @@ public class SustituteNote  extends SpecificModification{
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end,double specificNote, AbstractStyle style) {
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
+       System.out.println("cambie cosas!");
         Note particularNote= melody.get(position);
        if(this.silence){
            particularNote.setNote(0);

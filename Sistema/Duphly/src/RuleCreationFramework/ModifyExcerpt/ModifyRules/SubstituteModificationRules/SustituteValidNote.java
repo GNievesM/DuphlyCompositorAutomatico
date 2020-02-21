@@ -30,12 +30,14 @@ public class SustituteValidNote  extends SpecificModification{
     
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end, double specificNote, AbstractStyle style) {
+       System.out.println("cambie cosas!");
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
-        if(position+distance <0 || position+distance > melody.size()) // verifico que la nota de comparacion exista, si no existe no hago nada.
+        if(position+distance <0 || position+distance >= melody.size()) // verifico que la nota de comparacion exista, si no existe no hago nada.
             return melody; 
         
         Chord noteAsociatedChord = Util.LookForBaseChord(base,melody,position);
         Note particularNote= melody.get(position+distance);
+        particularNote = new Note(melody.get(position).getDuration(), particularNote.getNote(),particularNote.getOctave(),particularNote.getAccident());
         
         if(comp.esMayor() && nearNote){
             particularNote = style.nextValidNote(noteAsociatedChord, particularNote);

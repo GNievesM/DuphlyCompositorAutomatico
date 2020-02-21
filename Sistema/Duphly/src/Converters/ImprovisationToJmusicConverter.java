@@ -25,7 +25,7 @@ import jm.music.data.Phrase;
  */
 public class ImprovisationToJmusicConverter {
 
-    public Part ConvertImprovisation(List<Note> improvisation) {
+    public Part ConvertImprovisation(List<Note> improvisation, int index) {
 
         if(improvisation == null)
             return null;
@@ -45,7 +45,10 @@ public class ImprovisationToJmusicConverter {
         Phrase phrase1 = new Phrase();
         
         phrase1.addNoteList(pitchArray, rhythmArray);
-
+        if(index == 0)
+            phrase1.setDynamic(90);
+        if(index == 1)
+            phrase1.setDynamic(60);
         Part p = new Part("BAss", PIANO, 0);
         p.add(phrase1);
         return p;

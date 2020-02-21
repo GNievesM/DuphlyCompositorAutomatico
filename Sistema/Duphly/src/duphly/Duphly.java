@@ -139,7 +139,7 @@ public class Duphly {
         
         List<Note> blackFigure = new ArrayList<Note>();
         blackFigure.add(new Note(ConstantsDefinition.getInstance().GetBlackFigure(), C4, 3, 'b'));
-        Part p = dmc.ConvertImprovisationToJmusic(blackFigure);
+        Part p = dmc.ConvertImprovisationToJmusic(blackFigure,0);
         double duracionnegra = ConstantsDefinition.getInstance().GetBlackFigureForLilyPond();
     //    System.out.println("DuracionNegra : " + duracionnegra);
        // System.out.println("DuracionBlanca: " + duracionnegra * 2);

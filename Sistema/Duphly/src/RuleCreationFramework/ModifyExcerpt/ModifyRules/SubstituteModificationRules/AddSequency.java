@@ -49,6 +49,8 @@ public class AddSequency extends SpecificModification{
   
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end, double specificNote, AbstractStyle style) {
+        System.out.println("cambie cosas!");
+        
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
         int lastPosition= Util.calculateNotePositionInListByTimeSum(melody, end);
         if(this.sequence!= null)

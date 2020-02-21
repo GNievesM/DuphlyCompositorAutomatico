@@ -25,7 +25,7 @@ public class CopyMelodyNote extends SpecificModification{
     @Override
     public List<Note> makeModification(List<Chord> base, List<Note> melody, double start, double end, double specificNote, AbstractStyle style) {
         int position = Util.calculateNotePositionInListByTimeSum(melody, specificNote);
-        
+        System.out.println("cambie cosas!");
         melody.set(position, melody.get(position + (this.siguiente? 1 : -1)));
         return melody;
     }

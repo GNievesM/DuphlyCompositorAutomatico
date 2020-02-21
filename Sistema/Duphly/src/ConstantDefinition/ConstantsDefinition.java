@@ -57,7 +57,7 @@ public  class ConstantsDefinition {
      public double GetBlackFigureForLilyPond(){ 
        List<Note> blackFigure = new ArrayList<Note>();
        blackFigure.add(new Note(ConstantsDefinition.getInstance().GetBlackFigure(), C4, 3, 'b'));
-       Part p = DuphlyMusicComposer.getInstance().ConvertImprovisationToJmusic(blackFigure);
+       Part p = DuphlyMusicComposer.getInstance().ConvertImprovisationToJmusic(blackFigure,0);
        List<Phrase> phraseList = p.getPhraseList();
        List<jm.music.data.Note> noteList = phraseList.get(0).getNoteList();
        return noteList.get(0).getDuration();

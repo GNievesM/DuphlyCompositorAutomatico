@@ -30,6 +30,7 @@ public class ChordRule4 extends GenericChordRule {
             if (sumaTiempos == tempo && rule4Precondition(base.get(i),base.get(i+1))){//&& base.get(i).GetSeptima() == false && base.get(i + 1).GetSeptima() == true && VerifyRoot(tempo, base.get(i).GetGrade())) {
                 Chord c1 = ChordOperationUtil.flatSupertonic(base.get(i+1));
                 c1.SetDuration(base.get(i).GetDuration());
+                c1.SetSeptima(true);
                 base.set(i, c1);
             }
             sumaTiempos += base.get(i).GetDuration();
