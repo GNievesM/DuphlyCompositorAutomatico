@@ -12,34 +12,30 @@ import ChordManagement.GenericChordRule;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author gasto_000
- */
 public class ChordRule3 extends GenericChordRule {
 
     @Override
     protected List<Chord> seekChordPlace(List<Chord> base, int tempo) {
         int twelveBarsFigure = ConstantsDefinition.getInstance().getTwelveBars();
-        if (tempo >= twelveBarsFigure - 1) // 32 equivale a 16 negras, por ende 4 compases, multiplicado por 3 son los 12 compases del blues, si excede este numero  es por que excede los 12 compases.
+        if (tempo >= twelveBarsFigure - 1) // If the tempo exceeds the 12-bar figure, which is equivalent to 12 bars in blues, return the base chords as is.
         {
-            return base; // devuelvo la base sin modificaciones.
+            return base;
         }
-        int sumaTiempos = 0;
-        for (int i = 0; i < base.size() - 1; i++) {//No se puede aplicar la regla sobre el ultimo acorde
-            if (sumaTiempos == tempo && rule3Precondition(base.get(i),base.get(i+1),tempo)){//&& base.get(i).GetSeptima() == false && base.get(i + 1).GetSeptima() == true && VerifyRoot(tempo, base.get(i).GetGrade())) {
-                int duration = base.get(i).GetDuration(); // debo guardar la duracion para no cambiarla.
-                Chord transformedChord = this.TransformChord(base.get(i + 1)); //esta regla solo modifica el primer acorde de los dos que utiliza, por lo que el resto de los acordes queda intacto.
+        int sumTimes = 0;
+        for (int i = 0; i < base.size() - 1; i++) { // The rule cannot be applied to the last chord
+            if (sumTimes == tempo && rule3Precondition(base.get(i), base.get(i + 1), tempo)) {
+                int duration = base.get(i).GetDuration();
+                Chord transformedChord = this.TransformChord(base.get(i + 1)); // This rule only modifies the first chord of the two it uses, leaving the rest of the chords intact.
                 transformedChord.SetDuration(duration);
                 base.set(i, transformedChord);
             }
-            sumaTiempos += base.get(i).GetDuration();
+            sumTimes += base.get(i).GetDuration();
         }
         return base;
     }
 
     private boolean VerifyRoot(int tempo, int grade) {
-        int positionInRootStructure = tempo / ConstantsDefinition.getInstance().getTwoBarsFigure(); //divido entre 16 para descubrir en que seccion de los acordes base se encuentra el acorde y saber cual debia ser la raiz.
+        int positionInRootStructure = tempo / ConstantsDefinition.getInstance().getTwoBarsFigure(); // Divide by 16 to determine which section of the base chords the chord is in and know what the root should be.
         boolean returnValidated = false;
         switch (positionInRootStructure) {
             case 0:
@@ -54,30 +50,23 @@ public class ChordRule3 extends GenericChordRule {
             case 4:
                 returnValidated = 5 == grade;
                 break;
-
         }
         return returnValidated;
     }
 
     private Chord TransformChord(Chord c1) {
-
         Chord chord1 = new Chord(c1);
-   //     chord1.SetGrade(c1.GetGrade());
         chord1 = ChordOperationUtil.Dominant(chord1);
         chord1.SetSeptima(true);
-   //     chord1.SetDuration(c1.GetDuration());
         return chord1;
-
     }
     
-    private boolean rule3Precondition(Chord c1, Chord c2,int tempo){
-        return c1.GetSeptima()==false && c1.isMinor()==false && VerifyRoot(tempo, c1.GetGrade()) && c2.GetSeptima(); 
-    
+    private boolean rule3Precondition(Chord c1, Chord c2, int tempo) {
+        return c1.GetSeptima() == false && c1.isMinor() == false && VerifyRoot(tempo, c1.GetGrade()) && c2.GetSeptima(); 
     }
 
     @Override
     protected List<Chord> ApplyThisRule(Chord c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose Tools | Templates.
     }
-
 }

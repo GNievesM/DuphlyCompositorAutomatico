@@ -8,14 +8,8 @@ package ConverterUtil;
 import ConstantDefinition.ConstantsDefinition;
 import static jm.constants.Durations.CT;
 
-/**
- *
- * @author gasto_000
- */
 public class DurationConvertionUtil {
     public static double convertDuration(double duration){
-      //  if(duration == (double)ConstantsDefinition.getInstance().GetBlackFigure()*2/3)
-      //  System.out.println("Duracion: "+(CT * (duration/ ConstantsDefinition.getInstance().GetBlackFigure())));
      return CT * (duration/ (double)ConstantsDefinition.getInstance().GetBlackFigure());
     }
 }

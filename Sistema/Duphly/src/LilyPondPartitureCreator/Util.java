@@ -81,7 +81,7 @@ public class Util {
         return letra;
     }
 
-    public static String getLetraNotaConInt(int pitch, int accidente) {
+    public static String getPitchLetterWithInt(int pitch, int accidente) {
         //accidente segun el valor significa: 0 ninguno, 1 que la nota sostenida ,2 que la nota es una nota bemol
         String letra = "";
 

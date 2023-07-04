@@ -19,12 +19,8 @@ import jm.music.data.CPhrase;
 import jm.music.data.Part;
 import jm.music.data.Phrase;
 
-/**
- *
- * @author gasto_000
- */
+
 public class ChordToJmusicConverter {
-    //private Score bluesBase= new Score("BluesBase");
 
     private Part bluesPart;
     private int rootPitch;
@@ -32,7 +28,6 @@ public class ChordToJmusicConverter {
     public ChordToJmusicConverter(int rootPitch) {
         bluesPart = new Part("Bass", PIANO, 0);
         this.rootPitch = rootPitch;
-        // this.bluesPart  Part flute = new Part("Flute", FLUTE, 0);
 
     }
 
@@ -41,13 +36,13 @@ public class ChordToJmusicConverter {
         this.rootPitch = C4;
     }
 
-    private void bluesRythm(Chord chord) {
+    private void bluesRhythm(Chord chord) {
 
         double duration = DurationConvertionUtil.convertDuration(chord.GetDuration());
         if (chord.GetDuration() > ConstantsDefinition.getInstance().GetBlackFigure()) {
             this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord, rootPitch, duration / 2));
-            this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord, rootPitch, duration * 2 / 6));// le da duracion de dos trecillos de corchea
-            this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord, rootPitch, duration * 1 / 6));// le da la duracion del trecillo restante.
+            this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord, rootPitch, duration * 2 / 6)); // Gives it the duration of two eighth triplets
+            this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord, rootPitch, duration * 1 / 6)); // Gives it the duration of the remaining triplet.
         } else {
             this.bluesPart.addCPhrase(ChordToJmusicUtil.CalculateChord(chord,  rootPitch, duration));
         }
@@ -56,7 +51,7 @@ public class ChordToJmusicConverter {
     public Part TransformBase(List<Chord> chordList) {
         for (int i = 0; i < chordList.size(); i++) {
             Chord aux = chordList.get(i);
-            this.bluesRythm(aux);
+            this.bluesRhythm(aux);
         }
         this.bluesPart.setDynamic(60);
         return this.bluesPart;

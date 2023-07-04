@@ -10,10 +10,7 @@ import DataDefinition.Chord;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Gaston
- */
+
 public class ChordRuleOpD2 extends GenericChordRule {
 
     @Override

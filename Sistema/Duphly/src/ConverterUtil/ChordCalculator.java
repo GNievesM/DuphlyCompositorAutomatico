@@ -9,10 +9,6 @@ import DataDefinition.Chord;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- *
- * @author Gaston
- */
 public class ChordCalculator {
 
     CalculatorUtil cu;
@@ -153,30 +149,27 @@ public class ChordCalculator {
     }
 
     public static int calculateChordFirst(Chord c, int root) {
-        int calculatedFirst = 0;
+        int calculatedFirst = root;
+    
         switch (c.GetGrade()) {
-            case 1:
-                calculatedFirst = root;
-                break;
             case 2:
-                calculatedFirst = root + 2;
+                calculatedFirst += 2;
                 break;
             case 3:
-                calculatedFirst = root + 4;
+                calculatedFirst += 4;
                 break;
             case 4:
-                calculatedFirst = root + 5;
+                calculatedFirst += 5;
                 break;
             case 5:
-                calculatedFirst = root + 7;
+                calculatedFirst += 7;
                 break;
             case 6:
-                calculatedFirst = root + 9;
+                calculatedFirst += 9;
                 break;
             case 7:
-                calculatedFirst = root + 11;
+                calculatedFirst += 11;
                 break;
-
         }
 
         return c.isFlat() ? calculatedFirst - 1 : c.isSharp() ? calculatedFirst + 1 : calculatedFirst;

@@ -8,10 +8,6 @@ package ChordManagement;
 import DataDefinition.Chord;
 import java.util.List;
 
-/**
- *
- * @author Gaston
- */
 public class ChordOperationUtil {
     
     
@@ -20,15 +16,6 @@ public class ChordOperationUtil {
     }
 
     public static Chord SubDominant(Chord c) {
-        //Chord retunChord = new Chord(c);
-      
-      /*  if (c.GetGrade() > 4) {
-            retunChord.SetGrade((c.GetGrade() + 3) % 7);
-            return retunChord;
-        }
-        retunChord.SetGrade(c.GetGrade() + 3);*/
-        //retunChord.SetGrade(ChordOperationUtil.calcGrade(retunChord.GetGrade(),3));
-        //return retunChord;
          return chordCalculus(c,3);
     }
     
@@ -37,14 +24,6 @@ public class ChordOperationUtil {
     }
 
     public static Chord Dominant(Chord c) {
-       // Chord retunChord = new Chord(c);
-
-        /*if (c.GetGrade() > 3) {
-            retunChord.SetGrade((c.GetGrade() + 4) % 7);
-            return retunChord;
-        }
-        retunChord.SetGrade(c.GetGrade() + 4);*/
-        //retunChord.SetGrade(ChordOperationUtil.calcGrade(retunChord.GetGrade(),4));
 
         return chordCalculus(c,4);
     }
@@ -62,7 +41,6 @@ public class ChordOperationUtil {
     
     }
     
-        
     public static boolean isMinorSuperTonicOf(Chord maybeSuperTonic,Chord c){
        return ChordOperationUtil.supertonic(new Chord(c)).GetGrade() == maybeSuperTonic.GetGrade() && maybeSuperTonic.isMinor();    
     }
@@ -72,8 +50,6 @@ public class ChordOperationUtil {
     }
     
     public static Chord leadingTone(Chord c){
-      //  Chord result = new Chord(c);
-      //  result.SetGrade(result.GetGrade()+6);
         return chordCalculus(c,6);
     }
     
@@ -90,8 +66,6 @@ public class ChordOperationUtil {
     }
     
     public static Chord supertonic(Chord c){
-     //   Chord result = new Chord(c);
-     //   result.SetGrade(result.GetGrade()+1);
         return chordCalculus(c,1);
     }
     
@@ -120,9 +94,6 @@ public class ChordOperationUtil {
     }
     
     public static Chord mediant(Chord c){
-      //  Chord result = new Chord(c);
-      //  result.SetGrade(result.GetGrade()+2);
-      //  return result;
       return chordCalculus(c,2);
     }
 }

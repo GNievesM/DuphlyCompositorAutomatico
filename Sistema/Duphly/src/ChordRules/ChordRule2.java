@@ -11,16 +11,12 @@ import ChordManagement.GenericChordRule;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author gasto_000
- */
 public class ChordRule2 extends GenericChordRule {
 
     @Override
     protected List<Chord> ApplyThisRule(Chord c) {
         List<Chord> returnChordList = new ArrayList<Chord>();
-            Chord returnChord1 = c.createCopyWithHalfDuration();
+        Chord returnChord1 = c.createCopyWithHalfDuration();
         Chord returnChord2 = new Chord(returnChord1);
         returnChord2.SetSeptima(false);
         returnChord2.setMinor(false);

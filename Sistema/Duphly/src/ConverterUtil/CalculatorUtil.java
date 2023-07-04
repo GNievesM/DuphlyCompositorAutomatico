@@ -5,10 +5,7 @@
  */
 package ConverterUtil;
 
-/**
- *
- * @author Gaston
- */
+
 public class CalculatorUtil {
     public static int first(int root){
         return root;

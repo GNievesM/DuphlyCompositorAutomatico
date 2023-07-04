@@ -34,10 +34,7 @@ import java.util.Iterator;
 import java.util.List;
 import javafx.util.Pair;
 
-/**
- *
- * @author gasto_000
- */
+
 public class BaseChordsCreator {
 
     private List<Chord> base;
@@ -61,67 +58,60 @@ public class BaseChordsCreator {
     }
 
     public List<Chord> createBaseChords() {
-        List<Chord> listaAcordes = new ArrayList<Chord>();
-        /*for(int i=0;i<3;i++) listaAcordes.add(this.createChord(false, 1, 16)); 
- listaAcordes.add(this.createChord(true, 1, 4)); 
-  for(int i=0;i<2;i++)listaAcordes.add(this.createChord(false, 4, 16)); 
- for(int i=0;i<2;i++) listaAcordes.add(this.createChord(false, 1, 16)); 
- for(int i=0;i<2;i++) listaAcordes.add(this.createChord(false, 5, 16)); 
- for(int i=0;i<2;i++) listaAcordes.add(this.createChord(false, 1, 16)); 
-         */
+        List<Chord> chordList = new ArrayList<Chord>();
         int blackFigure = ConstantsDefinition.getInstance().GetBlackFigure();
         int twoBarFigure = blackFigure * 8;
-        listaAcordes.add(this.createChord(false, 1, twoBarFigure));
-        listaAcordes.add(this.createChord(true, 1, twoBarFigure));
-        listaAcordes.add(this.createChord(false, 4, twoBarFigure));
-        listaAcordes.add(this.createChord(false, 1, twoBarFigure));
-        listaAcordes.add(this.createChord(true, 5, twoBarFigure));
-        listaAcordes.add(this.createChord(false, 1, twoBarFigure));
-        return listaAcordes;
+        chordList.add(this.createChord(false, 1, twoBarFigure));
+        chordList.add(this.createChord(true, 1, twoBarFigure));
+        chordList.add(this.createChord(false, 4, twoBarFigure));
+        chordList.add(this.createChord(false, 1, twoBarFigure));
+        chordList.add(this.createChord(true, 5, twoBarFigure));
+        chordList.add(this.createChord(false, 1, twoBarFigure));
+        return chordList;
     }
 
-    private Chord createChord(boolean septima, int grade, int duracion) {
-        Chord acorde = new Chord();
-        acorde.SetDuration(duracion);
-        acorde.SetGrade(grade);
-        acorde.SetSeptima(septima);
+    private Chord createChord(boolean hasSeventh, int grade, int duration) {
+        Chord chord = new Chord();
+        chord.SetDuration(duration);
+        chord.SetGrade(grade);
+        chord.SetSeventh(hasSeventh);
 
-        return acorde;
+        return chord;
     }
 
-    public List<Pair<GenericChordRule, String>> GetChordRuleList(){
+    public List<Pair<GenericChordRule, String>> getChordRuleList(){
         List<Pair<GenericChordRule,String>> result = new ArrayList<>();
-        result.add(new Pair<>(new ChordRule0(),"Regla 0"));
-        result.add(new Pair<>(new ChordRule1(),"Regla 1"));
-        result.add(new Pair<>(new ChordRule2(),"Regla 2"));
-        result.add(new Pair<>(new ChordRule3(),"Regla 3a1"));
-        result.add(new Pair<>(new ChordRule3a2(),"Regla 3a2"));
-        result.add(new Pair<>(new ChordRule3b(),"Regla 3b"));
-        result.add(new Pair<>(new ChordRule4(),"Regla 4"));
-        result.add(new Pair<>(new ChordRule5(),"Regla 5"));
-        result.add(new Pair<>(new ChordRule6a(),"Regla 6a"));
-        result.add(new Pair<>(new ChordRule6b(),"Regla 6b"));
-        result.add(new Pair<>(new ChordRule6c(),"Regla 6c"));
-        result.add(new Pair<>(new ChordRuleOpA1(),"Opcional a1"));
-        result.add(new Pair<>(new ChordRuleOpA2(),"Opcional a2"));
-        result.add(new Pair<>(new ChordRuleOpA3(),"Opcional a3"));
-        result.add(new Pair<>(new ChordRuleOpA4(),"Opcional a4"));
-        result.add(new Pair<>(new ChordRuleOpB1(),"Opcional b1")); 
-        result.add(new Pair<>(new ChordRuleOpB2(),"Opcional b2"));
-        result.add(new Pair<>(new ChordRuleOpB3(),"Opcional b3"));
-        result.add(new Pair<>(new ChordRuleOpC1(),"Opcional c1"));
-        result.add(new Pair<>(new ChordRuleOpC2(),"Opcional c2"));
-        result.add(new Pair<>(new ChordRuleOpD1(),"Opcional d1"));
-        result.add(new Pair<>(new ChordRuleOpD2(),"Opcional d2"));
+        result.add(new Pair<>(new ChordRule0(),"Rule 0"));
+        result.add(new Pair<>(new ChordRule1(),"Rule 1"));
+        result.add(new Pair<>(new ChordRule2(),"Rule 2"));
+        result.add(new Pair<>(new ChordRule3(),"Rule 3a1"));
+        result.add(new Pair<>(new ChordRule3a2(),"Rule 3a2"));
+        result.add(new Pair<>(new ChordRule3b(),"Rule 3b"));
+        result.add(new Pair<>(new ChordRule4(),"Rule 4"));
+        result.add(new Pair<>(new ChordRule5(),"Rule 5"));
+        result.add(new Pair<>(new ChordRule6a(),"Rule 6a"));
+        result.add(new Pair<>(new ChordRule6b(),"Rule 6b"));
+        result.add(new Pair<>(new ChordRule6c(),"Rule 6c"));
+        result.add(new Pair<>(new ChordRuleOpA1(),"Optional a1"));
+        result.add(new Pair<>(new ChordRuleOpA2(),"Optional a2"));
+        result.add(new Pair<>(new ChordRuleOpA3(),"Optional a3"));
+        result.add(new Pair<>(new ChordRuleOpA4(),"Optional a4"));
+        result.add(new Pair<>(new ChordRuleOpB1(),"Optional b1")); 
+        result.add(new Pair<>(new ChordRuleOpB2(),"Optional b2"));
+        result.add(new Pair<>(new ChordRuleOpB3(),"Optional b3"));
+        result.add(new Pair<>(new ChordRuleOpC1(),"Optional c1"));
+        result.add(new Pair<>(new ChordRuleOpC2(),"Optional c2"));
+        result.add(new Pair<>(new ChordRuleOpD1(),"Optional d1"));
+        result.add(new Pair<>(new ChordRuleOpD2(),"Optional d2"));
        
            
         return result;
         
     }
     
-    public List<String> ruleList() {
+    public List<String> getRuleList() {
         List<String> ruleList = new ArrayList<String>();
-        for (Iterator<Pair<GenericChordRule,String>> iterator = this.GetChordRuleList().iterator(); iterator.hasNext();) {
+        for (Iterator<Pair<GenericChordRule,String>> iterator = this.getChordRuleList().iterator(); iterator.hasNext();) {
             ruleList.add(iterator.next().getValue());            
         }
         
@@ -132,6 +122,7 @@ public class BaseChordsCreator {
     public List<Chord> applyRuleToBase(GenericChordRule rule, int crotchetToApply, List<Chord> base) {
         return rule.ApplyRule(base, crotchetToApply);
     }
+    
     public void applyRuleToObjectBase(GenericChordRule rule, int crotchetToApply) {
         this.base = rule.ApplyRule(this.base, crotchetToApply);
     }
@@ -151,6 +142,7 @@ public class BaseChordsCreator {
 
         this.base= rule.ApplyRule(this.base, tempo);
     }
+    
     public List<Chord> applyRulePerPosition(GenericChordRule rule, int position, List<Chord> base) {
         if (position >= base.size()) {
             return base;

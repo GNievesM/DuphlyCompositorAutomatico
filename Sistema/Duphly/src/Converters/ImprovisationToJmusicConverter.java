@@ -19,10 +19,7 @@ import static jm.music.data.Note.REST;
 import jm.music.data.Part;
 import jm.music.data.Phrase;
 
-/**
- *
- * @author gasto_000
- */
+
 public class ImprovisationToJmusicConverter {
 
     public Part ConvertImprovisation(List<Note> improvisation, int index) {

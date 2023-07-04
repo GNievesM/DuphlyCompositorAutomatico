@@ -1,26 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataDefinition;
 
 import ConstantDefinition.ConstantsDefinition;
 
-/**
- *
- * @author gasto_000
- */
 public class Chord {
-    
-    boolean septima; // determina si el acorde tiene septima
-    boolean minor; // determina si el acorde es menor
-    // representar los modos? boolean 
-    int grade; // determina el grado del acorde con respecto a la tonalidad.
-    int duration; // determina la duracion, 2 es equivalente a una negra, la cual se definio como la unidad minima para un acrode en base al estilo musical.
-    //corchea es 1, blanca es 4, redonda es 8, cuadrada es 16
+
+    boolean seventh;
+    boolean minor;
+    int grade; // determines the chord's degree with respect to the key.
+    int duration; // determines the duration, 2 is equivalent to a quarter note, which was defined as the minimum unit for a chord based on the musical style.
+    // eighth note is 1, whole note is 4, half note is 8, whole note is 16
     boolean diminishedMode;
-    boolean flat ; // determina si el acorde es bemol. 
+    boolean flat;
     boolean sharp;
     boolean seventhComa;
     boolean ninth;
@@ -28,8 +18,8 @@ public class Chord {
     boolean sevenPlusFive;
     boolean sixth;
     boolean emptyMode;
-    boolean MSeventh;
-    boolean bTone;
+    boolean majorSeventh;
+    boolean flatTone;
     boolean tenth;
 
     public boolean isTenth() {
@@ -40,23 +30,21 @@ public class Chord {
         this.tenth = tenth;
     }
 
-    public boolean isMSeventh() {
-        return MSeventh;
+    public boolean isMajorSeventh() {
+        return majorSeventh;
     }
 
-    public void setMSeventh(boolean MSeventh) {
-        this.MSeventh = MSeventh;
+    public void setMajorSeventh(boolean majorSeventh) {
+        this.majorSeventh = majorSeventh;
     }
 
-    public boolean isbTone() {
-        return bTone;
+    public boolean isFlatTone() {
+        return flatTone;
     }
 
-    public void setbTone(boolean bTone) {
-        this.bTone = bTone;
+    public void setFlatTone(boolean flatTone) {
+        this.flatTone = flatTone;
     }
-
-
 
     public boolean isSeventhComa() {
         return seventhComa;
@@ -121,6 +109,7 @@ public class Chord {
     public void setDiminishedMode(boolean diminishedMode) {
         this.diminishedMode = diminishedMode;
     }
+
     public boolean isFlat() {
         return flat;
     }
@@ -128,26 +117,23 @@ public class Chord {
     public void setFlat(boolean flat) {
         this.flat = flat;
     }
-    public Chord(boolean septima, boolean minor, int grade, int duration) {
-        this.septima = septima;
+
+    public Chord(boolean seventh, boolean minor, int grade, int duration) {
+        this.seventh = seventh;
         this.minor = minor;
         this.grade = grade;
         this.duration = duration;
     }
 
     public Chord createCopyWithHalfDuration() {
-        return new Chord(this.septima, this.minor, this.grade, this.duration/2);
+        return new Chord(this.seventh, this.minor, this.grade, this.duration / 2);
     }
-    
-    
 
     public Chord(Chord c) {
-        this.septima = c.GetSeptima();
+        this.seventh = c.getSeventh();
         this.minor = c.isMinor();
-        this.grade = c.GetGrade();
-        this.duration = c.GetDuration();
-       // this.flat= c.isFlat();
-       // this.sharp = c.isSharp();
+        this.grade = c.getGrade();
+        this.duration = c.getDuration();
     }
 
     public boolean isMinor() {
@@ -159,33 +145,33 @@ public class Chord {
     }
 
     public Chord() {
-        this.septima = false;
+        this.seventh = false;
         this.minor = false;
         this.grade = 0;
-        this.duration = ConstantsDefinition.getInstance().GetBlackFigure();
+        this.duration = ConstantsDefinition.getInstance().getQuarterNote();
     }
 
-    public boolean GetSeptima() {
-        return this.septima;
+    public boolean getSeventh() {
+        return this.seventh;
     }
 
-    public void SetSeptima(boolean septima) {
-        this.septima = septima;
+    public void setSeventh(boolean seventh) {
+        this.seventh = seventh;
     }
 
-    public int GetGrade() {
+    public int getGrade() {
         return this.grade;
     }
 
-    public void SetGrade(int grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 
-    public int GetDuration() {
+    public int getDuration() {
         return this.duration;
     }
 
-    public void SetDuration(int duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }
