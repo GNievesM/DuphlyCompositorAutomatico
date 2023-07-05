@@ -107,30 +107,34 @@ public class Util {
    * @param n
    * @return
    */
-  public static int identifySemitonesInChord(Chord c, Note n) {
-    int result = 0;
-    int chordGrade = c.getGrade();
-    int noteGrade = n.getNote();
-    if (chordGrade == noteGrade) {
-      result = 1;
-    }
-    if (noteGrade == ((chordGrade - 1 + 11) % 12)) {
-      result = 11;
-    }
-    if (noteGrade == ((chordGrade - 1 + 4) % 12)) {
-      result = 4;
-    }
-    if (noteGrade == ((chordGrade - 1 + 6) % 12)) {
-      result = 6;
-    }
-    if (noteGrade == ((chordGrade - 1 + 7) % 12)) {
-      result = 7;
-    }
-    if (noteGrade == ((chordGrade - 1 + 8) % 12)) {
-      result = 8;
+  public static int identifySemitonesInChord(Chord chord, Note note) {
+    int semitones = 0;
+    int chordGrade = chord.getGrade();
+    int noteGrade = note.getNote();
+
+    // Compare note grade with chord grade and calculate semitones
+    switch (noteGrade) {
+      case chordGrade:
+        semitones = 1;
+        break;
+      case (chordGrade - 1 + 11) % 12:
+        semitones = 11;
+        break;
+      case (chordGrade - 1 + 4) % 12:
+        semitones = 4;
+        break;
+      case (chordGrade - 1 + 6) % 12:
+        semitones = 6;
+        break;
+      case (chordGrade - 1 + 7) % 12:
+        semitones = 7;
+        break;
+      case (chordGrade - 1 + 8) % 12:
+        semitones = 8;
+        break;
     }
 
-    return result;
+    return semitones;
   }
 
   /**
