@@ -24,7 +24,6 @@ public class DirectionContinuityNoRepCount extends GenericImprovisationRule {
         Rhythm r = rtf.CreateRhythmSequence(new SimpleRhythmCreator());
 
         Note firstNote = Util.CalculateNoteForChord(base.get(0), Util.RandomizePitchNotAbusingBluesNote(), r.getRhythmSequence().get(0).getDuration(), Util.GetOctaveLimitedBetween(5, 3));
-        //new Note(r.getRhythmSequence().get(0), Util.)
         double barCount = 0;
         for (int i = 0; i < r.getRhythmSequence().size() - 1; i++) {
 
@@ -91,49 +90,39 @@ public class DirectionContinuityNoRepCount extends GenericImprovisationRule {
                     while (Util.IsHIgherOrEqualPitchThan(improvisation.get(i), n) && n.getOctave()<=8) {
                         int notePitch = n.getNote();
                         int noteOctave = n.getOctave();
-                        int extendedNotationNote =Util.getExpandedFormNote(notePitch, noteOctave);// notePitch + (noteOctave * 12);
-                     /*   System.out.println("Previo extension: tono:" + notePitch + " octava: "+ noteOctave);
-                        System.out.println("extendida :"+extendedNotationNote);
-                        System.out.println("Luego Extension: tono: " + Util.getSmallFormNotePitchOctave(extendedNotationNote).getKey() + "octava "
-                        + Util.getSmallFormNotePitchOctave(extendedNotationNote).getValue());*/
+                        int extendedNotationNote =Util.getExpandedFormNote(notePitch, noteOctave);/
                         Chord c = Util.LookForBaseChord(base, improvisation, i+1);
                        
-                      //  System.out.println("PAra arriba: Entre aca con: acorde: " + Util.CalcChord(c) + " nota: " + notePitch + " octava:" + noteOctave + "busco notaOctava:" +improvisation.get(i).getNote() + " " + improvisation.get(i).getOctave());
                         if (notePitch < Util.CalcChord(c)) {
-                       //      System.out.println("Entre con la nota:" + notePitch + " y acorde: "+Util.CalcChord(c));
                             notePitch += 12;
-                      //      System.out.println("Quedo la nota:"+ notePitch);
                         }
                         switch (notePitch - Util.CalcChord(c)) {
                             case 0:
-                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote+3);//(extendedNotationNote + 2) % 12 +1;
-                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+3);//(extendedNotationNote + 3) / 12 ;
+                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote+3);
+                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+3);
                                 break;
                             case 3:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+2);//(extendedNotationNote + 1) % 12 +1;
-                              noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+2);//(extendedNotationNote + 2) / 12 ;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+2);
+                              noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+2);
                                 break;
                             case 5:
-                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote+1);//(extendedNotationNote ) % 12 +1;
-                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+1); //(extendedNotationNote + 1) / 12 ;
+                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote+1);
+                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+1); 
                                 break;
                             case 6:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+1);// (extendedNotationNote ) % 12 +1;
-                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+1);// (extendedNotationNote + 1) / 12 ;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+1);
+                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+1);
                                 break;
                             case 7:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+3);//(extendedNotationNote + 2) % 12 +1;
-                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+3);// (extendedNotationNote + 3) / 12  ;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote+3);
+                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+3);
                                 break;
 
                             case 10:
-                               notePitch = Util.getSmallFormNotePitch(extendedNotationNote+2);//(extendedNotationNote + 1) % 12 +1;
-                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+2);//(extendedNotationNote + 2) / 12 ;
+                               notePitch = Util.getSmallFormNotePitch(extendedNotationNote+2);
+                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote+2);
                                 break;
-                       //      default: System.out.println("La nota la pifie");break;
                         }
-                     //   if(notePitch==0)
-                     //       System.out.println("HAY UN 00000000");
                         n.setNote(notePitch);
                         n.setOctave(noteOctave);
                     }
@@ -146,54 +135,44 @@ public class DirectionContinuityNoRepCount extends GenericImprovisationRule {
                     while (Util.IsHIgherOrEqualPitchThan(n,improvisation.get(i)) && improvisation.get(i+1).getOctave()>=5) {
                         int notePitch = n.getNote();
                         int noteOctave = n.getOctave();
-                         int extendedNotationNote =Util.getExpandedFormNote(notePitch, noteOctave);// notePitch + (noteOctave * 12);
-                     /*   System.out.println("Previo extension: tono:" + notePitch + " octava: "+ noteOctave);
-                        System.out.println("extendida :"+extendedNotationNote);
-                        System.out.println("Luego Extension: tono: " + Util.getSmallFormNotePitchOctave(extendedNotationNote).getKey() + "octava "
-                        + Util.getSmallFormNotePitchOctave(extendedNotationNote).getValue());*/
+                         int extendedNotationNote =Util.getExpandedFormNote(notePitch, noteOctave);
                        
                         Chord c = Util.LookForBaseChord(base, improvisation, i+1);
-                   //      System.out.println("PAra abajo :Entre aca con: acorde: " + Util.CalcChord(c) + " nota: " + notePitch  + " octava:" + noteOctave + "busco notaOctava:" +improvisation.get(i).getNote() + " " + improvisation.get(i).getOctave() );
                         if (notePitch < Util.CalcChord(c)) {
-                      //      System.out.println("Entre con la nota:" + notePitch + " y acorde: "+Util.CalcChord(c));
                             notePitch += 12;
-                       //     System.out.println("Quedo la nota:"+ notePitch);
                             
                         }
                         switch (notePitch -Util.CalcChord(c)) {
                             case 0:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-2);//(extendedNotationNote - 3) % 12 +1;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-2);
                                   if(noteOctave == Util.getSmallFormNoteOctave(extendedNotationNote-2) && goingDown)
                                     noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-2)-1;
-                                  else noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-2);//(extendedNotationNote - 2) / 12 ;
+                                  else noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-2);
                                 break;
                             case 3:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-3);// (extendedNotationNote - 4) % 12 +1;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-3);
                                 
-                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-3);// (extendedNotationNote - 3) / 12 ;
+                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-3);
                                 break;
                             case 5:
-                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-2);//(extendedNotationNote - 3) % 12 +1;
-                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-2);//(extendedNotationNote - 2) / 12 ;
+                                 notePitch = Util.getSmallFormNotePitch(extendedNotationNote-2);
+                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-2);
                                  goingDown=true;
                                 break;
                             case 6:
-                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote-1);// (extendedNotationNote - 2) % 12 +1;
-                               noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-1);// (extendedNotationNote - 1) / 12 ;
+                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote-1);
+                               noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-1);
                                 break;
                             case 7:
-                              notePitch = Util.getSmallFormNotePitch(extendedNotationNote-1);//(extendedNotationNote - 2) % 12+1;
-                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-1);//(extendedNotationNote - 1) / 12;
+                              notePitch = Util.getSmallFormNotePitch(extendedNotationNote-1);
+                                noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-1);
                                 break;
 
                             case 10:
-                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote-3);//(extendedNotationNote - 4) % 12 +1;
-                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-3);//(extendedNotationNote - 3) / 12 ;
+                                notePitch = Util.getSmallFormNotePitch(extendedNotationNote-3);
+                                 noteOctave = Util.getSmallFormNoteOctave(extendedNotationNote-3);
                                 break;
-                      //      default: System.out.println("La nota la pifie");break;
                         }
-                   //     if(notePitch==0)
-                      //      System.out.println("HAY UN 00000000");
                         n.setNote(notePitch);
                         n.setOctave(noteOctave);
                     }
@@ -201,7 +180,6 @@ public class DirectionContinuityNoRepCount extends GenericImprovisationRule {
                     if(improvisation.get(i) != improvisation.get(i+1))
                     total--;
                 }
-                //i++;
                 if (total == 0) {
                     total = this.continuityConstant;
                 }

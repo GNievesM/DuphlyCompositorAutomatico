@@ -9,11 +9,7 @@ import DataDefinition.Chord;
 import DataDefinition.Rhythm;
 import java.util.List;
 
-/**
- *
- * @author gasto_000
- */
 public abstract class GenericRhythmRule {
-    
-    public abstract Rhythm GenerateRhytm(List<Chord> base);
+
+  public abstract Rhythm GenerateRhytm(List<Chord> base);
 }

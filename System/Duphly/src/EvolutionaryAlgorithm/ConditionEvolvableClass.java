@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package EvolutionaryAlgorithm;
 
 import DataDefinition.Chord;
@@ -14,12 +9,8 @@ import RuleCreationFramework.FrameworkUtil.FrameWorkUtil;
 import static RuleCreationFramework.FrameworkUtil.FrameWorkUtil.copyMelody;
 import Style.AbstractStyle;
 import javafx.util.Pair;
-/**
- *
- * @author Gaston
- */
-public class ConditionEvolvableClass implements IEvolvableClass{
 
+public class ConditionEvolvableClass implements IEvolvableClass {
     String id;
     List<Chord> base;
     List<Note> melody; 
@@ -30,8 +21,7 @@ public class ConditionEvolvableClass implements IEvolvableClass{
     int mutationSpeed;
     AbstractStyle style;
     
-    
-    public ConditionEvolvableClass(String id,List<Chord> base, List<Note> melody, Double start, Double end, IFitnessEvaluable fe, SpecificModificationMutator ma, int mutationSpeed, AbstractStyle style) {
+    public ConditionEvolvableClass(String id, List<Chord> base, List<Note> melody, Double start, Double end, IFitnessEvaluable fe, SpecificModificationMutator ma, int mutationSpeed, AbstractStyle style) {
         this.base = base;
         this.melody = melody;
         this.start = start;
@@ -43,28 +33,21 @@ public class ConditionEvolvableClass implements IEvolvableClass{
         this.style = style;
     }
     
-    
     @Override
     public double evaluateFitness() {
-        return fe.evaluateFitness(this.melody,this.base,this.start,this.end);
+        return fe.evaluateFitness(this.melody, this.base, this.start, this.end);
     }
     
-    
-
     @Override
     public void crossOver(IEvolvableClass ec, List<Boolean> changes) {
         ConditionEvolvableClass downEc = (ConditionEvolvableClass) ec;
         int thisStartPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
-        int otherStartPosition= Util.calculateNotePositionInListByTimeSum(downEc.melody, downEc.start);
-   //     String dId = ec.getId();
-   //     downEc.id = ""+dId+ "-" + this.getId()+"";
-    //    this.id =""+ this.getId()+ "-" +  dId +"";
-        
+        int otherStartPosition = Util.calculateNotePositionInListByTimeSum(downEc.melody, downEc.start);
+ 
         for (int i = 0; i < changes.size(); i++) { 
-  //          System.out.print(changes.get(i) + "-");
-            if(changes.get(i)){
-                Note other = downEc.melody.get(i+otherStartPosition);
-                Note thisNote = this.melody.get(i+thisStartPosition);
+            if (changes.get(i)) {
+                Note other = downEc.melody.get(i + otherStartPosition);
+                Note thisNote = this.melody.get(i + thisStartPosition);
                
                 int otherNote = other.getNote();
                 int otherOctave = other.getOctave();
@@ -75,27 +58,19 @@ public class ConditionEvolvableClass implements IEvolvableClass{
                 thisNote.setNote(otherNote);
                 thisNote.setOctave(otherOctave);
                 
-                
-                downEc.melody.set(i+otherStartPosition, other);
-                this.melody.set(i+thisStartPosition, thisNote);
-                
-
+                downEc.melody.set(i + otherStartPosition, other);
+                this.melody.set(i + thisStartPosition, thisNote);
             }
-            
         }
-   //     System.out.println("Melodias durante el cambio");
- //       this.PrintMelody();
-  //      downEc.PrintMelody();
-        
     }
 
     @Override
     public void mutate(List<Boolean> mutationPlaces) {
-        //this.ma.mutate(mutationPlaces);
         int startPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
         for (int i = 0; i < mutationPlaces.size(); i++) {
-            if(mutationPlaces.get(i))
-                melody.set(startPosition+i,ma.mutate(this.base,this.melody,this.start,this.end,startPosition+i,this.style));
+            if (mutationPlaces.get(i)) {
+                melody.set(startPosition + i, ma.mutate(this.base, this.melody, this.start, this.end, startPosition + i, this.style));
+            }
         }
     }
 
@@ -148,53 +123,51 @@ public class ConditionEvolvableClass implements IEvolvableClass{
     }
 
     @Override
-    public List<Boolean> generateFactorCrossOverList() { // se genera de forma aleatoria
+    public List<Boolean> generateFactorCrossOverList() { 
         int thisStartPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
-        int otherStartPosition= Util.calculateNotePositionInListByTimeSum(melody, end);
+        int otherStartPosition = Util.calculateNotePositionInListByTimeSum(melody, end);
         int difference = otherStartPosition - thisStartPosition;
-        List<Boolean> factor = new ArrayList<> ();
+        List<Boolean> factor = new ArrayList<>();
         for (int i = 0; i < difference; i++) {
-            factor.add(Math.random()*100<50); 
+            factor.add(Math.random() * 100 < 50); 
         }
         return factor;
-       
     }
-// revisar que pasa con este carajo.
+
     @Override
-    public List<Boolean> generateFactorMutationList() { // se genera aleatoriamente al igual que la de crossOver
+    public List<Boolean> generateFactorMutationList() { 
         int thisStartPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
-        int otherStartPosition= Util.calculateNotePositionInListByTimeSum(melody, end);
+        int otherStartPosition = Util.calculateNotePositionInListByTimeSum(melody, end);
         int difference = otherStartPosition - thisStartPosition;
-        List<Boolean> factor = new ArrayList<> ();
+        List<Boolean> factor = new ArrayList<>();
         for (int i = 0; i < difference; i++) {
             factor.add(false);
         }
-        int quantity = this.mutationSpeed > factor.size() ? factor.size()-1: this.mutationSpeed;
-        while(quantity>0){
-            int aux = (int) ((Math.random()*100)%difference); 
-            if(factor.get(aux)!=true){
+        int quantity = this.mutationSpeed > factor.size() ? factor.size() - 1 : this.mutationSpeed;
+        while (quantity > 0) {
+            int aux = (int) ((Math.random() * 100) % difference); 
+            if (factor.get(aux) != true) {
                 factor.set(aux, true);
                 quantity--;
             }
         }
         return factor;
-       
     }
 
     @Override
     public void PrintMelody() {
-       int StartPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
+       int startPosition = Util.calculateNotePositionInListByTimeSum(melody, start);
        int endPosition = Util.calculateNotePositionInListByTimeSum(melody, end);
-       System.out.print("Melodia no " + this.id + ": " );
-       for(int i =StartPosition; i<endPosition; i++){
-        System.out.print(melody.get(i).getNote()+ melody.get(i).getOctave()*12+ " - ");
+       System.out.print("Melody no " + this.id + ": " );
+       for (int i = startPosition; i < endPosition; i++) {
+        System.out.print(melody.get(i).getNote() + melody.get(i).getOctave() * 12 + " - ");
        }
        System.out.println("");
     }
 
     @Override
     public IEvolvableClass clone() {
-        return new ConditionEvolvableClass(this.id,this.base,copyMelody(this.melody),this.start,this.end,this.fe,this.ma, this.mutationSpeed,this.style);
+        return new ConditionEvolvableClass(this.id, this.base, copyMelody(this.melody), this.start, this.end, this.fe, this.ma, this.mutationSpeed, this.style);
     }
 
     @Override
@@ -206,5 +179,4 @@ public class ConditionEvolvableClass implements IEvolvableClass{
     public List<Pair<Integer, Integer>> faultyPartition() {
        return this.fe.faultyPartition(melody, base, this.start, this.end);
     }
-    
 }

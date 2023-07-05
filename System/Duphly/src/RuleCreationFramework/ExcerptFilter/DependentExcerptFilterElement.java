@@ -10,10 +10,6 @@ import DataDefinition.Note;
 import java.util.List;
 import javafx.util.Pair;
 
-/**
- *
- * @author Gaston
- */
 public abstract class DependentExcerptFilterElement {
     
     public abstract List<Pair<Double,Double>> Filter(List<Chord> base, List<Note> melody,double melodyStart, double melodyEnd, List<Pair<Double,Double>> excerptsList);

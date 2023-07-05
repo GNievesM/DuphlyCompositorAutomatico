@@ -22,38 +22,67 @@ import java.util.List;
  *
  * @author Gaston
  */
-public class EvolutionarySolve extends GuaranteeConditionSolver{
+public class EvolutionarySolve extends GuaranteeConditionSolver {
 
-    int tresholdPercenage;
-    int poblationQuantity;
-    int crossOverPercentage;
-    int mutationPercentage;
-    int mutationLimitPerSubject;
-    int iterationLimit;
+  int tresholdPercenage;
+  int poblationQuantity;
+  int crossOverPercentage;
+  int mutationPercentage;
+  int mutationLimitPerSubject;
+  int iterationLimit;
 
-    public EvolutionarySolve(int tresholdPercenage, int poblationQuantity, int crossOverPercentage, int mutationPercentage, int mutationLimitPerSubject, int iterationLimit) {
-        this.tresholdPercenage = tresholdPercenage;
-        this.poblationQuantity = poblationQuantity;
-        this.crossOverPercentage = crossOverPercentage;
-        this.mutationPercentage = mutationPercentage;
-        this.mutationLimitPerSubject = mutationLimitPerSubject;
-        this.iterationLimit = iterationLimit;
+  public EvolutionarySolve(
+    int tresholdPercenage,
+    int poblationQuantity,
+    int crossOverPercentage,
+    int mutationPercentage,
+    int mutationLimitPerSubject,
+    int iterationLimit
+  ) {
+    this.tresholdPercenage = tresholdPercenage;
+    this.poblationQuantity = poblationQuantity;
+    this.crossOverPercentage = crossOverPercentage;
+    this.mutationPercentage = mutationPercentage;
+    this.mutationLimitPerSubject = mutationLimitPerSubject;
+    this.iterationLimit = iterationLimit;
+  }
+
+  @Override
+  public List<Note> Solve(
+    List<Chord> base,
+    List<Note> melody,
+    Double start,
+    Double end,
+    AbstractStyle style,
+    GuaranteedCondition gc,
+    SpecificModification sm
+  ) {
+    List<IEvolvableClass> init = new ArrayList<>();
+
+    for (int i = 0; i < this.poblationQuantity; i++) {
+      ConditionEvolvableClass cec = new ConditionEvolvableClass(
+        "" + i,
+        base,
+        FrameWorkUtil.copyMelody(melody),
+        start,
+        end,
+        gc,
+        sm,
+        this.mutationLimitPerSubject,
+        style
+      );
+      cec.mutate(cec.generateFactorCrossOverList());
+      init.add(cec);
     }
-    
-        
-    @Override
-    public List<Note> Solve(List<Chord> base, List<Note> melody, Double start, Double end, AbstractStyle style, GuaranteedCondition gc, SpecificModification sm) {
-       List<IEvolvableClass> init = new ArrayList<>();
-       
-        for (int i = 0; i < this.poblationQuantity; i++) {
-            ConditionEvolvableClass cec= new ConditionEvolvableClass(""+i, base,FrameWorkUtil.copyMelody(melody) ,start,end,gc,sm,this.mutationLimitPerSubject, style);//new Double(0),new Double(10), guaranteedCondition, modification);
-            cec.mutate(cec.generateFactorCrossOverList()); 
-            init.add(cec);
-        }
-      
-     
-       GenericEvolutionaryAlgorithm ea = new GenericEvolutionaryAlgorithm( this.tresholdPercenage, poblationQuantity,(this.poblationQuantity*mutationPercentage)/100,(this.poblationQuantity*this.mutationPercentage/100), init,this.iterationLimit);
-       return ((ConditionEvolvableClass)ea.findBestSolution()).getMelody();
-    }
-    
+
+    GenericEvolutionaryAlgorithm ea = new GenericEvolutionaryAlgorithm(
+      this.tresholdPercenage,
+      poblationQuantity,
+      (this.poblationQuantity * mutationPercentage) / 100,
+      (this.poblationQuantity * this.mutationPercentage / 100),
+      init,
+      this.iterationLimit
+    );
+    return ((ConditionEvolvableClass) ea.findBestSolution()).getMelody();
+  }
 }

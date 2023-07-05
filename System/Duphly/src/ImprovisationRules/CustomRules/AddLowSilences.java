@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
 
-public class EscalasAscendentes extends GenericImprovisationRule {
+public class AddLowSilences extends GenericImprovisationRule {
 
   @Override
   public Pair<List<Note>, List<Chord>> VerifyAndCorrectImprovisation(
@@ -27,12 +27,7 @@ public class EscalasAscendentes extends GenericImprovisationRule {
   ) {
     Pair<List<Note>, List<Chord>> m1 =
       this.GenerarMelodia(this.crearReglaCompleta(), improvisation, base);
-    return this.ConcatenarMelodias(
-        improvisation,
-        m1.getKey(),
-        base,
-        m1.getValue()
-      );
+    return m1;
   }
 
   private Pair<List<Note>, List<Chord>> GenerarMelodia(
@@ -61,7 +56,6 @@ public class EscalasAscendentes extends GenericImprovisationRule {
   private BlockFilter crearContenedorDeFiltrosDeCompases() {
     BlockFilter bf = new BlockFilter();
     bf.addExcerptFilter(this.crearContenedorDeFiltrosDePasajesAAplicarse());
-    bf.addDependentFilter(this.crearReglaCompletaDeFiltroDeCompases());
     return bf;
   }
 
@@ -72,7 +66,7 @@ public class EscalasAscendentes extends GenericImprovisationRule {
         2,
         this.crearCondicionDeFiltroDeCompases(),
         null,
-        50.0,
+        100.0,
         null,
         null,
         false
@@ -81,7 +75,7 @@ public class EscalasAscendentes extends GenericImprovisationRule {
   }
 
   private BlockConditionSelector crearCondicionDeFiltroDeCompases() {
-    return new NotesTotal(HelperCustomRule.ComparadorMayor(), 4);
+    return new NotesTotal(HelperCustomRule.ComparadorMenor(), 10);
   }
 
   private ExcerptFilter crearContenedorDeFiltrosDePasajesAAplicarse() {
@@ -123,11 +117,11 @@ public class EscalasAscendentes extends GenericImprovisationRule {
     CompleteModificationRule cr;
     cr =
       new CompleteModificationRule(
-        null,
+        this.crearCondicionModificacion(),
         null,
         this.crearCambioParaModificar(),
         null,
-        50
+        100
       );
     return cr;
   }
@@ -137,11 +131,11 @@ public class EscalasAscendentes extends GenericImprovisationRule {
   }
 
   private ModificationCondition crearCondicionModificacion() {
-    return new CheckOctave(HelperCustomRule.ComparadorMayor(), 4);
+    return new CheckOctave(HelperCustomRule.ComparadorMenor(), 5);
   }
 
   private SpecificModification crearCambioParaModificar() {
-    return new SustituteValidNote(HelperCustomRule.ComparadorMayor(), -1, true);
+    return new SustituteNote(true);
   }
 
   @Override

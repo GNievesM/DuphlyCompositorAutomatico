@@ -17,10 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
 
-/**
- *
- * @author gasto_000
- */
 public class ImprovisationPurelyRandomNotAbusingBluesNote extends GenericImprovisationRule {
 
     @Override

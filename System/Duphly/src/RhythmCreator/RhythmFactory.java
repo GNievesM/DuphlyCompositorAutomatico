@@ -14,36 +14,32 @@ import java.util.List;
  * @author gasto_000
  */
 public class RhythmFactory {
-    
-   private List<Chord> base; 
-   private Rhythm rhythmSequence;
 
-    public RhythmFactory(List<Chord> base) {
-        this.base = base;
-    }
+  private List<Chord> base;
+  private Rhythm rhythmSequence;
 
-    public Rhythm getRhythmSequence() {
-        return rhythmSequence;
-    }
+  public RhythmFactory(List<Chord> base) {
+    this.base = base;
+  }
 
-    public List<Chord> getBase() {
-        return base;
-    }
+  public Rhythm getRhythmSequence() {
+    return rhythmSequence;
+  }
 
-    public void setBase(List<Chord> base) {
-        this.base = base;
-    }
-   
-   public Rhythm CreateRhythmSequence (GenericRhythmRule grr){
-       this.rhythmSequence = grr.GenerateRhytm(base);
-       return this.rhythmSequence;
-       
-   
-   
-   } 
+  public List<Chord> getBase() {
+    return base;
+  }
 
-    public void setRhythmSequence(Rhythm rhythmSequence) {
-        this.rhythmSequence = rhythmSequence;
-    }
-   
+  public void setBase(List<Chord> base) {
+    this.base = base;
+  }
+
+  public Rhythm CreateRhythmSequence(GenericRhythmRule grr) {
+    this.rhythmSequence = grr.GenerateRhytm(base);
+    return this.rhythmSequence;
+  }
+
+  public void setRhythmSequence(Rhythm rhythmSequence) {
+    this.rhythmSequence = rhythmSequence;
+  }
 }

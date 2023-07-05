@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RuleCreationFramework.ModifyExcerpt.ModifyRules.GuaranteedConditionChecker;
 
 import RuleCreationFramework.ModifyExcerpt.ModifyRules.ModificationConditionChecker.*;
@@ -17,10 +12,6 @@ import EvolutionaryAlgorithm.IFitnessEvaluable;
 import java.util.ArrayList;
 import javafx.util.Pair;
 
-/**
- *
- * @author Gaston
- */
 public class GuaranteePercentage extends GuaranteedCondition implements IFitnessEvaluable{
     CheckPercentage c;
 
@@ -98,10 +89,10 @@ public class GuaranteePercentage extends GuaranteedCondition implements IFitness
             if(this.satisfiesCondition(toCompare, Util.LookForBaseChord(base, melody, i)))
                 differencePercentaje += correctPercentaje;
             
-            heightSum += Util.getExpandedFormNote(toCompare.getNote(),toCompare.getOctave()); // hay que arreglar para que esta cuenta tienda a tirar la melodia al medio y no hacia abajo.
+            heightSum += Util.getExpandedFormNote(toCompare.getNote(),toCompare.getOctave()); 
 
         }
-        differencePercentaje -= (heightSum / ((notePositionEnd-notePositionStart)+1))/1000; // le resto el promedio, a promedio mas alto peor fitness. 
+        differencePercentaje -= (heightSum / ((notePositionEnd-notePositionStart)+1))/1000; 
         
         return differencePercentaje;
     }
@@ -109,7 +100,7 @@ public class GuaranteePercentage extends GuaranteedCondition implements IFitness
         int notePositionStart = Util.calculateNotePositionInListByTimeSum(melody, start);
         int notePositionEnd = Util.calculateNotePositionInListByTimeSum(melody, end);
         List<Pair<Integer,Integer>> particiones  = new ArrayList<> ();
-        Integer partitionStart=notePositionStart; // lo cambie ded 0 para que tome como comienzo la primer nota posible.
+        Integer partitionStart=notePositionStart; 
         boolean insidePartition = false;
 
         for (int i = notePositionStart; i < notePositionEnd-1; i++) {

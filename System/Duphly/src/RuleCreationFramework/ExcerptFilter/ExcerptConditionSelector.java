@@ -11,10 +11,7 @@ import RuleCreationFramework.FrameworkUtil.FrameWorkUtil;
 import java.util.List;
 import javafx.util.Pair;
 
-/**
- *
- * @author Gaston
- */
+
 public abstract class ExcerptConditionSelector {
     public abstract List<Pair<Double,Double>> applySelector(List<Note> melody, List<Chord> base, double start, double end, int length, List<Pair<Double,Double>> alreadySelected);
     protected boolean sharesPartition(double start,double end, List<Pair<Double,Double>> alreadySelected){

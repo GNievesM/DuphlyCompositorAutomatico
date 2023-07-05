@@ -12,13 +12,9 @@ import EvolutionaryAlgorithm.IFitnessEvaluable;
 import EvolutionaryAlgorithm.IMutationAllowed;
 import java.util.List;
 
-/**
- *
- * @author Gaston
- */
+
 public abstract class GuaranteedCondition implements IFitnessEvaluable {
     public abstract boolean checkCondition(List<Chord> base, List<Note> melody, Double start, Double end);
- //   public abstract int calculateChunkFitness(List<Chord> base, List<Note> melody, Double start, Double end);
 
 
 }

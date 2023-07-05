@@ -17,15 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.util.Pair;
 
-/**
- *
- * @author gasto_000
- */
 public class ImprovisationPurelyRandom extends GenericImprovisationRule {
 
     @Override
     public List<Note> GenerateImprovisation(List<Chord> base) {
-      //  System.out.println("RANDOM_______________-------------------------------");
         List<Note> improvisation = new ArrayList<Note>();
            RhythmFactory rf = new RhythmFactory(base);
            Rhythm r = rf.CreateRhythmSequence(new SimpleRhythmCreator());
@@ -62,11 +57,7 @@ public class ImprovisationPurelyRandom extends GenericImprovisationRule {
             Double doce = new Double(12);
             probability.add(new Double(uno/doce));
         }
-     //       int NoteToImprovisation = (int) Math.rint(Math.random()*5);// 6 por trabajar con la escala del blues(pentatonica)
-    //        int octave = Util.GetOctaveLimitedBetween(5,3);
-            retorno.add(this.style.validRandomNote(acord, duration, probability));//Util.CalculateNoteForChord(acord, NoteToImprovisation, duration, octave));
-    
-            
+            retorno.add(this.style.validRandomNote(acord, duration, probability));
         
         return retorno;
         

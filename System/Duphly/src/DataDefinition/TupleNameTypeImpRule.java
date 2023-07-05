@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DataDefinition;
 
 import ImprovisationManagement.GenericImprovisationRule;
 
-/**
- *
- * @author Gaston
- */
 public class TupleNameTypeImpRule {
     String description;
     String type;
@@ -55,7 +46,4 @@ public class TupleNameTypeImpRule {
         this.generate = generate;
         this.gir = gir;
     }
-    
-    
-    
 }
